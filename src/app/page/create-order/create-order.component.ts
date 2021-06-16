@@ -35,7 +35,12 @@ export class CreateOrderComponent implements OnInit {
       data.quantity = parseInt(data.quantity);
       this.httpRequest.post(environment.GET_DETAIL, data).subscribe(() => {
         this.toastr.success('Create order successfully!', 'Success');
+        this.refreshForm();
       });
     }
+  }
+
+  refreshForm() {
+    this.formGroup?.reset();
   }
 }

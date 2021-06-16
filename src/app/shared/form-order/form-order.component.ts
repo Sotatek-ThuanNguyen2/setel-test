@@ -16,10 +16,14 @@ export class FormOrderComponent implements OnInit, OnChanges {
   formGroup: FormGroup | undefined;
   @Input()
   data: Product | undefined;
+  @Input()
+  isDetail: boolean = false;
 
   formOrder: FormGroup | undefined;
 
   seletedFile: File | undefined;
+
+  status = Status;
   @ViewChild('file', {static: false}) file: any;
   constructor(
     private fb: FormBuilder
@@ -44,7 +48,10 @@ export class FormOrderComponent implements OnInit, OnChanges {
       deliveryAddress: [null, [Validators.required]],
       customerName: [null, [Validators.required]],
       image: [null],
-      status: [Status.DRAFT]
+      status: [Status.DRAFT],
+      pin: [null],
+      id: [null],
+      createdAt: [null],
     });
     this.formGroup?.addControl('formOrder', this.formOrder);
   }
@@ -58,7 +65,10 @@ export class FormOrderComponent implements OnInit, OnChanges {
       deliveryAddress: data.deliveryAddress,
       customerName: data.customerName,
       image: data.image,
-      status: data.status
+      status: data.status,
+      pin: data.pin,
+      id: data.id,
+      createdAt: data.createdAt
     })
     // this.seletedFile = data.image;
   }
@@ -67,10 +77,7 @@ export class FormOrderComponent implements OnInit, OnChanges {
     return ConvertColorService.convertColor(status);
   }
 
-  // handleFileInput(event: any) {
-  //   console.log(event);
-  //   console.log(this.file);
-  //   // this.srcImage = this.file.nativeElement.value;
-  //   this.seletedFile = 'Screenshot 2021-06-15 153534.png';
-  // }
+  cancelOrder() {
+    this.formOrder?.get('status')?.setValue(Status.CANCELLED);
+  }
 }

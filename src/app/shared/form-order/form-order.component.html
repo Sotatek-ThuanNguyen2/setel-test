@@ -85,6 +85,9 @@
       <div class="col form-group">
         <label>Status: </label>
         <p class="status" [class]="convert(formOrder.get('status')?.value)">{{formOrder.get('status')?.value}}</p>
+        <ng-template [ngIf]="isDetail && formOrder.get('status')?.value === status.CONFIRMED">
+          You can cancel order in <span class="here-click" (click)="cancelOrder()">HERE</span>
+        </ng-template>
       </div>
     </div>
   </form>

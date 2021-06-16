@@ -8,4 +8,6 @@ export interface Product {
   customerName?: string;
   status?: string;
   id?: number;
+  createdAt?: string;
+  pin?: number;
 }

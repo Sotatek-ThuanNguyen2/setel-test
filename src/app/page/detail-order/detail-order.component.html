@@ -3,7 +3,7 @@
 <h3 class="list__title">Detail</h3>
 
 <div *ngIf="formGroup">
-  <app-form-order [data]="responseData" [formGroup]="formGroup"></app-form-order>
+  <app-form-order [data]="responseData" [formGroup]="formGroup" [isDetail]="true"></app-form-order>
 </div>
 
 <button class="btn btn-success" (click)="updateForm()">Update</button>

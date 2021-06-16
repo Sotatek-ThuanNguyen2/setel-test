@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { Product } from 'src/app/constants/product';
+import { Status } from 'src/app/constants/status';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -41,7 +43,10 @@ export class DetailOrderComponent implements OnInit, OnDestroy {
   }
 
   getData() {
-    this.ngSubscription.push(this.httpRequest.get(environment.GET_DETAIL + `/${this.id}`).subscribe((data) => {
+    this.ngSubscription.push(this.httpRequest.get(environment.GET_DETAIL + `/${this.id}`).subscribe((data: Product) => {
+      if(data.status === Status.CREATED) {
+        data.status = Status.CONFIRMED;
+      }
       this.responseData = data;
     }));
   }

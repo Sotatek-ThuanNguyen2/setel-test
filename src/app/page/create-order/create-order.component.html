@@ -1,7 +1,7 @@
 <button class="btn btn-primary" [routerLink]="['/list']">Back To List</button>
 
 <div class="form-order" *ngIf="formGroup">
-  <app-form-order [formGroup]="formGroup"></app-form-order>
+  <app-form-order [formGroup]="formGroup" [isDetail]="false"></app-form-order>
 </div>
 
 <div class="form-button">
