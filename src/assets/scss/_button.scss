@@ -1,0 +1,32 @@
+@mixin button-color($color-active, $color-hover) {
+  background-color: $color-active;
+  &:hover {
+    background-color: $color-hover;
+  }
+}
+
+.btn {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  height: 38px;
+  line-height: 38px;
+  &.btn-primary {
+    @include button-color(#0d6efd, #0b5ed7);
+    color: #ffffff;
+  }
+  &.btn-danger {
+    @include button-color(#dc3545, #bb2d3b);
+    color: #ffffff;
+  }
+  &.btn-secondary {
+    @include button-color(#6c757d, #5c636a);
+    color: #ffffff;
+  }
+  &.btn-success {
+    @include button-color(#198754, #157347);
+    color: #ffffff;
+  }
+}
