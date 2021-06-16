@@ -2,8 +2,17 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const API = {
+  get_all_list: 'http://localhost:3001/api/orders',
+  create_order: 'api/orders',
+  get_detail: 'http://localhost:3001/api/orders'
+}
+
 export const environment = {
-  production: false
+  production: false,
+  GET_ALL_LIST: API.get_all_list,
+  CREATE_ORDER: API.create_order,
+  GET_DETAIL: API.get_detail
 };
 
 /*

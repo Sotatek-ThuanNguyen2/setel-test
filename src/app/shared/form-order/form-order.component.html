@@ -1,0 +1,91 @@
+<div *ngIf="formOrder">
+  <form [formGroup]="formOrder">
+    <div class="row">
+      <div class="col form-group">
+        <label class="label-control">Product Name <span class="required">(*)</span></label>
+        <input type="text" formControlName="productName" class="form-control"/>
+        <div *ngIf="formOrder.get('productName')?.invalid && (formOrder.get('productName')?.dirty || formOrder.get('productName')?.touched)">
+          <div *ngIf="formOrder.get('productName')?.errors?.required" class="errors">
+            Product Name is required.
+          </div>
+        </div>
+      </div>
+      <div class="col form-group">
+        <label class="label-control">Quantity <span class="required">(*)</span></label>
+        <input type="text" formControlName="quantity" class="form-control" />
+        <div *ngIf="formOrder.get('quantity')?.invalid && (formOrder.get('quantity')?.dirty || formOrder.get('quantity')?.touched)">
+          <div *ngIf="formOrder.get('quantity')?.errors?.required" class="errors">
+            Quantity is required.
+          </div>
+          <div *ngIf="formOrder.get('quantity')?.errors?.pattern" class="errors">
+            Quantity must be numeric.
+          </div>
+        </div>
+      </div>
+      <div class="col form-group">
+        <label class="label-control">Phone Number <span class="required">(*)</span></label>
+        <input type="text" formControlName="phone" class="form-control" placeholder="+84/00000000" maxlength="10"/>
+        <div *ngIf="formOrder.get('phone')?.invalid && (formOrder.get('phone')?.dirty || formOrder.get('phone')?.touched)">
+          <div *ngIf="formOrder.get('phone')?.errors?.required" class="errors">
+            Phone Number is required.
+          </div>
+          <div *ngIf="formOrder.get('phone')?.errors?.hasPhone" class="errors">
+            Phone number not the format.
+          </div>
+        </div>
+      </div>
+      <div class="col form-group">
+        <label class="label-control">Email <span class="required">(*)</span></label>
+        <input type="email" formControlName="email" class="form-control" />
+        <div *ngIf="formOrder.get('email')?.invalid && (formOrder.get('email')?.dirty || formOrder.get('email')?.touched)">
+          <div *ngIf="formOrder.get('email')?.errors?.required" class="errors">
+            Email is required.
+          </div>
+          <div *ngIf="formOrder.get('email')?.errors?.email" class="errors">
+            Email not the format.
+          </div>
+        </div>
+      </div>
+      <div class="col form-group">
+        <label class="label-control">Address <span class="required">(*)</span></label>
+        <input type="text" formControlName="deliveryAddress" class="form-control" maxlength="50"/>
+        <div *ngIf="formOrder.get('deliveryAddress')?.invalid && (formOrder.get('deliveryAddress')?.dirty || formOrder.get('deliveryAddress')?.touched)">
+          <div *ngIf="formOrder.get('deliveryAddress')?.errors?.required" class="errors">
+            Address is required.
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col form-group">
+        <label class="label-control">Image</label>
+        <input type="text" formControlName="image" class="form-control" />
+      </div> -->
+      <!-- <div class="form-group col">
+        <label for="file">Image</label>
+        <img [src]="srcImage" alt="image">
+        <input type="file"
+               id="file"
+               (change)="handleFileInput($event.target)" #file>
+      </div> -->
+
+      <div class="col form-group">
+        <label class="label-control">Customer Name <span class="required">(*)</span></label>
+        <input
+          type="text"
+          formControlName="customerName"
+          class="form-control"
+          maxlength="50"
+          minlength="5"
+        />
+        <div *ngIf="formOrder.get('customerName')?.invalid && (formOrder.get('customerName')?.dirty || formOrder.get('customerName')?.touched)">
+          <div *ngIf="formOrder.get('customerName')?.errors?.required" class="errors">
+            Customer Name is required.
+          </div>
+        </div>
+      </div>
+      <div class="col form-group">
+        <label>Status: </label>
+        <p class="status" [class]="convert(formOrder.get('status')?.value)">{{formOrder.get('status')?.value}}</p>
+      </div>
+    </div>
+  </form>
+</div>

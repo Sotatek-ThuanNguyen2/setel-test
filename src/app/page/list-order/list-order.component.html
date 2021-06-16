@@ -1,0 +1,6 @@
+<button class="btn btn-success" [routerLink]="['/create']">Create Order</button>
+
+<h3 class="list__title">List Order</h3>
+<ng-template ngFor let-item [ngForOf]="responseData" let-i="index">
+  <app-item-list [data]="item"></app-item-list>
+</ng-template>

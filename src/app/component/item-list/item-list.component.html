@@ -1,0 +1,9 @@
+<div class="item">
+  <div class="item__information">
+    <h5 class="item__name">{{data.productName}}</h5>
+    <p class="item__quantity">{{data.quantity | number}}</p>
+  </div>
+  <div class="item__button">
+    <button class="btn btn-primary" (click)="showDetail(data.id)">Detail</button>
+  </div>
+</div>
